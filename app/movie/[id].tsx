@@ -1,4 +1,5 @@
 import { getMovieByIdAction } from "@/core/actions/movie/get-movie-by-id.action";
+import MovieDescription from "@/presentation/components/movie/MovieDescription";
 import MovieHeader from "@/presentation/components/movie/MovieHeader";
 import { useMovie } from "@/presentation/hooks/useMovie";
 import { useLocalSearchParams } from "expo-router";
@@ -16,12 +17,13 @@ const MovieScreen = () => {
     );
   }
   return (
-    <ScrollView>
+    <ScrollView className="">
       <MovieHeader
         title={movieQuery.data.title}
         originalTitle={movieQuery.data.originalTitle}
         poster={movieQuery.data.poster}
       />
+      <MovieDescription movie={movieQuery.data} />
       {/* <Text>{movieQuery.data.title ?? "No tiene"}</Text> */}
     </ScrollView>
   );
