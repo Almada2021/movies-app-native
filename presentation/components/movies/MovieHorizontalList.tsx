@@ -33,7 +33,7 @@ const MovieHorizontalList = ({ movies, title, loadNextPage }: Props) => {
     // Prevent multiple request
     isLoading.current = true;
     // TODO: cargar siguientes Pelis
-    console.log("Cargando siguientes peliculas");
+    // console.log("Cargando siguientes peliculas");
     loadNextPage && loadNextPage();
     isLoading.current = false;
   };

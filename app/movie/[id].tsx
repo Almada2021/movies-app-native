@@ -1,4 +1,5 @@
 import { getMovieByIdAction } from "@/core/actions/movie/get-movie-by-id.action";
+import MovieCast from "@/presentation/components/movie/MovieCast";
 import MovieDescription from "@/presentation/components/movie/MovieDescription";
 import MovieHeader from "@/presentation/components/movie/MovieHeader";
 import { useMovie } from "@/presentation/hooks/useMovie";
@@ -7,7 +8,7 @@ import { View, Text, ActivityIndicator, ScrollView } from "react-native";
 
 const MovieScreen = () => {
   const { id } = useLocalSearchParams();
-  const { movieQuery } = useMovie(+id);
+  const { movieQuery, castQuery } = useMovie(+id);
   if (movieQuery.isLoading || !movieQuery.data) {
     return (
       <View className=" flex flex-1 w-full items-center justify-center ">
@@ -24,6 +25,7 @@ const MovieScreen = () => {
         poster={movieQuery.data.poster}
       />
       <MovieDescription movie={movieQuery.data} />
+      <MovieCast cast={castQuery.data ?? []} />
       {/* <Text>{movieQuery.data.title ?? "No tiene"}</Text> */}
     </ScrollView>
   );
